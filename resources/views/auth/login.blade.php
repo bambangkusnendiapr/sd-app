@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ asset('admin/index2.html') }}"><b>Login</b> Page</a>
+    <a href="{{ asset('admin/index2.html') }}"><b>SD</b> Persis Asy-Syuhada</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

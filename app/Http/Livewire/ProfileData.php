@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Alert;
+use App\Models\user;
 
 class ProfileData extends Component
 {

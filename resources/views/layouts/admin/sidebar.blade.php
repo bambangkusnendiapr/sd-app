@@ -34,6 +34,14 @@
                 </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('student') }}" class="nav-link @yield('student')">
+                <i class="nav-icon fas fa-child"></i>
+                <p>
+                Student
+                </p>
+            </a>
+          </li>
           @role('admin')
           <li class="nav-item @yield('menu-master')">
           <a href="#" class="nav-link @yield('master')">

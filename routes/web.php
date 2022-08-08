@@ -24,6 +24,20 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
 
+    Route::get('/profile', \App\Http\Livewire\ProfileData::class)->name('profile');
+
+    Route::get('/student', \App\Http\Livewire\StudentData::class)->name('student');
+    Route::get('/student/create', [App\Http\Controllers\Admin\StudentController::class, 'create'])->name('student.create');
+    Route::post('/student/store', [App\Http\Controllers\Admin\StudentController::class, 'store'])->name('student.store');
+    Route::get('/student/{id}/edit', [App\Http\Controllers\Admin\StudentController::class, 'edit'])->name('student.edit');
+    Route::put('/student/{id}/update', [App\Http\Controllers\Admin\StudentController::class, 'update'])->name('student.update');
+
+    //Export
+    Route::get('/studentExport', [App\Http\Controllers\Admin\ExportController::class, 'studentExport'])->name('studentExport');
+
+    //Import
+    Route::post('studentsImport', [App\Http\Controllers\Admin\ImportController::class, 'studentsImport'])->name('studentsImport');
+
     Route::group(['middleware' => ['role:admin']], function() {
 
         //Role
@@ -38,6 +52,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
         Route::get('/menus', \App\Http\Livewire\Master\DataMenus::class)->name('menus');
         
     });
-
-    Route::get('/profile', \App\Http\Livewire\ProfileData::class)->name('profile');
 });

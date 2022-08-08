@@ -1,0 +1,30 @@
+<table>
+    <thead>
+    <tr>
+        <th>nama</th>
+        <th>kelas</th>
+        <th>no_induk</th>
+        <th>tempat_lahir</th>
+        <th>tgl_lahir</th>
+        <th>jenis_kelamin</th>
+        <th>pendidikan_sebelumnya</th>
+        <th>agama</th>
+        <th>alamat</th>
+        <th>hafalan_surat_awal</th>
+        <th>nama_ayah</th>
+        <th>nama_ibu</th>
+        <th>kerja_ayah</th>
+        <th>kerja_ibu</th>
+        <th>alamat_jalan</th>
+        <th>alamat_kelurahan</th>
+        <th>alamat_kecamatan</th>
+        <th>alamat_kota</th>
+        <th>alamat_propinsi</th>
+        <th>hp_ortu</th>
+        <th>nama_wali</th>
+        <th>kerja_wali</th>
+        <th>alamat_wali</th>
+        <th>hp_wali</th>
+    </tr>
+    </thead>
+</table>
