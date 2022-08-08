@@ -3,6 +3,7 @@
     <tr>
         <th>nama</th>
         <th>kelas</th>
+        <th>kelas_tipe</th>
         <th>no_induk</th>
         <th>tempat_lahir</th>
         <th>tgl_lahir</th>

@@ -31,6 +31,7 @@ class StudentsImport implements ToCollection, WithHeadingRow
                 'nama' => $row['nama'],
                 'nis' => $row['no_induk'],
                 'kelas' => $row['kelas'],
+                'kelas_id' => $row['kelas_tipe'],
                 'tempat_lahir' => $row['tempat_lahir'],
                 'tgl_lahir' => $row['tgl_lahir'],
                 'jk' => $row['jenis_kelamin'],

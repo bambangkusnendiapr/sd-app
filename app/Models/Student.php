@@ -15,4 +15,9 @@ class Student extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function kls()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_id');
+    }
 }

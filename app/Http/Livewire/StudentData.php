@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Student;
 use App\Models\User;
+use App\Models\Kelas;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,33 @@ use File;
 
 class StudentData extends Component
 {
+    public $nama;
+    public $nis;
+    public $tempat;
+    public $tgl;
+    public $jk;
+    public $agama;
+    public $sekolah;
+    public $alamat;
+    public $namaAyah;
+    public $namaIbu;
+    public $kerjaAyah;
+    public $kerjaIbu;
+    public $jalanOrtu;
+    public $kel;
+    public $kec;
+    public $kota;
+    public $prov;
+    public $namaWali;
+    public $kerjaWali;
+    public $alamatWali;
+    public $gambar;
+
     public $state = [];
     public $idHapus = null;
-    public $idEdit = null;
-    public $form = null;
+
+    public $kelas = 'Semua';
+    public $kelasTipe = 'Semua';
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -39,8 +63,19 @@ class StudentData extends Component
 
     public function render()
     {
+        $students;
+        if($this->kelas == 'Semua' && $this->kelasTipe == 'Semua') {
+            $students = Student::where('nama', 'like', '%'.$this->search.'%')->where('is_deleted', false)->paginate($this->paginate);
+        } else if($this->kelas != 'Semua' && $this->kelasTipe == 'Semua') {
+            $students = Student::where('nama', 'like', '%'.$this->search.'%')->where('kelas', $this->kelas)->where('is_deleted', false)->paginate($this->paginate);
+        } else if($this->kelas == 'Semua' && $this->kelasTipe != 'Semua') {
+            $students = Student::where('nama', 'like', '%'.$this->search.'%')->where('kelas_id', $this->kelasTipe)->where('is_deleted', false)->paginate($this->paginate);
+        } else {
+            $students = Student::where('nama', 'like', '%'.$this->search.'%')->where('kelas', $this->kelas)->where('kelas_id', $this->kelasTipe)->where('is_deleted', false)->paginate($this->paginate);
+        }
         return view('livewire.student-data', [
-            'students' => Student::where('nama', 'like', '%'.$this->search.'%')->where('is_deleted', false)->paginate($this->paginate)
+            'students' => $students,
+            'kelasData' => Kelas::where('is_deleted', false)->get()
         ]);
     }
 
@@ -80,6 +115,34 @@ class StudentData extends Component
             return redirect()->route('menus');
         }
         
+    }
+
+    public function detail($id)
+    {
+        $data = Student::find($id);
+        $this->nama = $data->nama;
+        $this->nis = $data->nis;
+        $this->tempat = $data->tempat_lahir;
+        $this->tgl = $data->tgl_lahir;
+        $this->jk = $data->jk;
+        $this->agama = $data->agama;
+        $this->sekolah  = $data->sekolah_asal;
+        $this->alamat = $data->alamat;
+        $this->namaAyah = $data->nama_ayah;
+        $this->namaIbu = $data->nama_ibu;
+        $this->kerjaAyah = $data->kerja_ayah;
+        $this->kerjaIbu = $data->kerja_ibu;
+        $this->jalanOrtu = $data->jalan_ortu;
+        $this->kel = $data->kel_ortu;
+        $this->kec = $data->kec_ortu;
+        $this->kota  = $data->kota_ortu;
+        $this->prov = $data->prov_ortu;
+        $this->namaWali = $data->namaWali;
+        $this->kerjaWali = $data->kerjaWali;
+        $this->alamatWali = $data->alamatWali;
+        $this->gambar = $data->gambar;
+
+        $this->dispatchBrowserEvent('show-detail');
     }
 
     private function resetInput()

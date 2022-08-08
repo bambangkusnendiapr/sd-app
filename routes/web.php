@@ -37,6 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
 
     //Import
     Route::post('studentsImport', [App\Http\Controllers\Admin\ImportController::class, 'studentsImport'])->name('studentsImport');
+    
+    Route::get('/psikolog', \App\Http\Livewire\PsychologistData::class)->name('psikolog');
 
     Route::group(['middleware' => ['role:admin']], function() {
 
@@ -50,6 +52,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
         Route::get('/permissions', \App\Http\Livewire\Master\DataPermissions::class)->name('permissions');
         Route::get('/users', \App\Http\Livewire\Master\DataUsers::class)->name('users');
         Route::get('/menus', \App\Http\Livewire\Master\DataMenus::class)->name('menus');
+        Route::get('/kelas', \App\Http\Livewire\Master\KelasData::class)->name('kelas');
         
     });
 });

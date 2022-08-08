@@ -43,7 +43,7 @@ return new class extends Migration
             $table->string('hp_wali')->nullable();
             $table->string('status')->default('AKTIF');
             $table->string('kelas')->nullable();
-            $table->integer('class_id')->nullable();
+            $table->integer('kelas_id')->nullable();
             $table->integer('point')->default(0);
             $table->string('surat_awal')->nullable();
             $table->integer('surat_id')->nullable();

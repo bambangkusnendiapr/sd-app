@@ -38,7 +38,15 @@
             <a href="{{ route('student') }}" class="nav-link @yield('student')">
                 <i class="nav-icon fas fa-child"></i>
                 <p>
-                Student
+                Siswa
+                </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('psikolog') }}" class="nav-link @yield('psikolog')">
+                <i class="nav-icon fas fa-clipboard-check"></i>
+                <p>
+                Psikolog
                 </p>
             </a>
           </li>
@@ -74,6 +82,12 @@
                 <a href="{{ route('menus') }}" class="nav-link @yield('menus')">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Menu</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('kelas') }}" class="nav-link @yield('kelas')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Kelas</p>
                 </a>
               </li>
           </ul>
