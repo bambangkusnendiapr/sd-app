@@ -46,11 +46,26 @@
             <a href="{{ route('psikolog') }}" class="nav-link @yield('psikolog')">
                 <i class="nav-icon fas fa-clipboard-check"></i>
                 <p>
-                Psikolog
+                Data Psikolog
                 </p>
             </a>
           </li>
-          @role('admin')
+          <li class="nav-item">
+            <a href="{{ route('tahsinUpload') }}" class="nav-link @yield('tahsinUpload')">
+                <i class="nav-icon fas fa-book-open"></i>
+                <p>
+                Data Tahsin
+                </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('portofolio') }}" class="nav-link @yield('portofolio')">
+                <i class="nav-icon fas fa-address-card"></i>
+                <p>
+                Portofolio
+                </p>
+            </a>
+          </li>
           <li class="nav-item @yield('menu-master')">
           <a href="#" class="nav-link @yield('master')">
               <i class="nav-icon fas fa-copy"></i>
@@ -66,6 +81,7 @@
                     <p>User</p>
                 </a>
               </li>
+              @role('developer')
               <li class="nav-item">
                 <a href="{{ route('roles') }}" class="nav-link @yield('roles')">
                     <i class="far fa-circle nav-icon"></i>
@@ -84,6 +100,7 @@
                     <p>Menu</p>
                 </a>
               </li>
+              @endrole
               <li class="nav-item">
                 <a href="{{ route('kelas') }}" class="nav-link @yield('kelas')">
                     <i class="far fa-circle nav-icon"></i>
@@ -92,7 +109,6 @@
               </li>
           </ul>
           </li>
-          @endrole
           <li class="nav-item">
           <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="nav-icon fas fa-sign-out-alt"></i>

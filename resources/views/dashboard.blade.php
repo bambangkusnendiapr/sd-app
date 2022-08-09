@@ -27,58 +27,44 @@
     
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-3 col-6">
+          <div class="col-4">
             <!-- small box -->
             <div class="small-box bg-info">
-              <div class="inner">
-                <h3>{{ $guru }}</h3>
-
-                <p>Guru</p>
-              </div>
-              <div class="icon">
-                <i class="nav-icon fas fa-user-tie"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
               <div class="inner">
                 <h3>{{ $siswa }}</h3>
 
                 <p>Siswa</p>
               </div>
               <div class="icon">
-                <i class="nav-icon fas fa-user-graduate"></i>
+                <i class="nav-icon fas fa-users"></i>
               </div>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-4">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ $laki }}</h3>
+
+                <p>Siswa Laki-laki</p>
+              </div>
+              <div class="icon">
+                <i class="nav-icon fas fa-male"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-4">
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{ $kelas }}</h3>
+                <h3>{{ $perempuan }}</h3>
 
-                <p>Kelas</p>
+                <p>Siswa Perempuan</p>
               </div>
               <div class="icon">
-                <i class="fas fa-border-all"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>{{ $ekstrakurikuler }}</h3>
-
-                <p>Ekstrakurikuler</p>
-              </div>
-              <div class="icon">
-                <i class="fab fa-buffer"></i>
+                <i class="nav-icon fas fa-female"></i>
               </div>
             </div>
           </div>

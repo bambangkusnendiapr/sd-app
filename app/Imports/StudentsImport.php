@@ -14,7 +14,6 @@ class StudentsImport implements ToCollection, WithHeadingRow
     {
         foreach ($rows as $row) 
         {
-            // dd($row['nama']);
             $user = User::orderBy('id', 'DESC')->first();
 
             $user = User::create([
@@ -28,6 +27,7 @@ class StudentsImport implements ToCollection, WithHeadingRow
 
             Student::create([
                 'user_id' => $user->id,
+                'tanggal_masuk' => $row['tanggal_masuk'],
                 'nama' => $row['nama'],
                 'nis' => $row['no_induk'],
                 'kelas' => $row['kelas'],

@@ -12,6 +12,10 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
+        'developer' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
         'admin' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'

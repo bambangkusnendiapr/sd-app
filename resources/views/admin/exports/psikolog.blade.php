@@ -1,0 +1,12 @@
+<table>
+    <thead>
+    <tr>
+        <th>tanggal</th>
+        <th>siswa_id</th>
+        <th>iq</th>
+        <th>kemandirian</th>
+        <th>kemampuan_bekerja</th>
+        <th>penyesuaian_diri</th>
+    </tr>
+    </thead>
+</table>

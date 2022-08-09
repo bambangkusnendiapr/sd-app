@@ -99,6 +99,7 @@
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Kelas</th>
+                            <th>Data</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -109,6 +110,12 @@
                             <td>{{ $data->id }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->kelas }} - {{ $data->kls->nama }}</td>
+                            <td>
+                              <div class="btn-group" role="group" aria-label="Basic example">
+                                <a href="{{ route('psikolog.data', $data->id) }}" class="btn btn-secondary btn-sm"><i class="fas fa-clipboard-check"></i> Psikolog</a>
+                                <a href="{{ route('tahsin', $data->id) }}" class="btn btn-success btn-sm"><i class="fas fa-book-open"></i> Tahsin & Tahfizh</a>
+                              </div>
+                            </td>
                             <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <button wire:click.prevent="detail({{ $data->id }})" class="btn btn-info btn-sm"><i class="fas fa-info"></i></button>

@@ -1,6 +1,7 @@
 <table>
     <thead>
     <tr>
+        <th>tanggal_masuk</th>
         <th>nama</th>
         <th>kelas</th>
         <th>kelas_tipe</th>

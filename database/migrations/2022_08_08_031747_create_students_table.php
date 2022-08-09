@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal_masuk')->nullable();
             $table->integer('user_id')->nullable();
             $table->string('gambar')->nullable();
             $table->string('nis')->nullable();

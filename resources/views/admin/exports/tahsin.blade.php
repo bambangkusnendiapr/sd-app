@@ -1,0 +1,13 @@
+<table>
+    <thead>
+    <tr>
+        <th>tanggal</th>
+        <th>siswa_id</th>
+        <th>jilid</th>
+        <th>halaman</th>
+        <th>murajaah</th>
+        <th>ziyadah</th>
+        <th>nilai</th>
+    </tr>
+    </thead>
+</table>

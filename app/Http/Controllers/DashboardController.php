@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class DashboardController extends Controller
 {
@@ -14,10 +15,9 @@ class DashboardController extends Controller
     public function index()
     {
         return view('dashboard', [
-            'guru' => 1,
-            'siswa' => 2,
-            'kelas' => 3,
-            'ekstrakurikuler' => 4,
+            'siswa' => Student::count(),
+            'laki' => Student::where('jk', 'Laki-laki')->count(),
+            'perempuan' => Student::where('jk', 'Perempuan')->count(),
         ]);
     }
 }

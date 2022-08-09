@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Psychologist;
+use App\Models\Tahsin;
 use App\Models\Student;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Validator;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class PsychologistData extends Component
+class TahsinUpload extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -35,8 +35,8 @@ class PsychologistData extends Component
     {
         $student = Student::where('nama', 'like', '%'.$this->search.'%')->get('id');
 
-        return view('livewire.psychologist-data', [
-            'psychologist' => Psychologist::whereIn('student_id', $student)->where('is_deleted', false)->paginate($this->paginate),
+        return view('livewire.tahsin-upload', [
+            'tahsin' => Tahsin::whereIn('student_id', $student)->where('is_deleted', false)->paginate($this->paginate),
             'students' => Student::all()
         ]);
     }

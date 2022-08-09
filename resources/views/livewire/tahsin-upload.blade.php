@@ -1,6 +1,6 @@
-@section('title', 'Psikolog')
+@section('title', 'Tahsin')
 
-@section('psikolog', 'active')
+@section('tahsinUpload', 'active')
 
 <div>
 
@@ -8,12 +8,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Data Psikolog</h1>
+          <h1>Data Tahsin</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Admin</a></li>
-            <li class="breadcrumb-item active">Data Psikolog</li>
+            <li class="breadcrumb-item active">Data Tahsin</li>
           </ol>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
-              <a href="{{ route('psikologExport') }}" class="btn btn-success"><i class="fas fa-file-download"></i> Download Template</a>
+              <a href="{{ route('tahsinExport') }}" class="btn btn-success"><i class="fas fa-file-download"></i> Download Template</a>
               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default"><i class="fas fa-file-upload"></i> Upload File</button>
   
               <div class="card-tools">
@@ -74,26 +74,30 @@
                             <th>#</th>
                             <th>Tanggal</th>
                             <th>Nama</th>
-                            <th>IQ</th>
-                            <th>Kemandirian</th>
-                            <th>Kemampuan Bekerja</th>
-                            <th>Penyesuaian Diri</th>
+                            <th>Jilid</th>
+                            <th>Halaman</th>
+                            <th>Murajaah</th>
+                            <th>Ziyadah</th>
+                            <th>Nilai</th>
+                            <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
-                      @forelse ($psychologist as $key => $data)
+                      @forelse ($tahsin as $key => $data)
                         <tr class="text-center">
-                            <td>{{ $psychologist->firstItem() + $key }}</td>
+                            <td>{{ $tahsin->firstItem() + $key }}</td>
                             <td>{{ $data->tanggal }}</td>
                             <td>{{ $data->student->nama }}</td>
-                            <td>{{ $data->iq }}</td>
-                            <td>{{ $data->kemandirian }}</td>
-                            <td>{{ $data->kemampuan_bekerja }}</td>
-                            <td>{{ $data->penyesuaian_diri }}</td>
+                            <td>{{ $data->jilid }}</td>
+                            <td>{{ $data->halaman }}</td>
+                            <td>{{ $data->murajaah }}</td>
+                            <td>{{ $data->ziyadah }}</td>
+                            <td>{{ $data->nilai }}</td>
+                            <td>{{ $data->ket }}</td>
                         </tr>
                       @empty
                         <tr>
-                            <td colspan="8" class="text-center font-italic text-danger"><h5>-- Data Tidak Ditemukan --</h5></td>
+                            <td colspan="9" class="text-center font-italic text-danger"><h5>-- Data Tidak Ditemukan --</h5></td>
                         </tr>
                       @endforelse
                     </tbody>
@@ -103,7 +107,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
               <div class="d-flex justify-content-center">
-               {{ $psychologist->links() }}
+               {{ $tahsin->links() }}
               </div>
             </div>
             <!-- /.card-footer-->
@@ -123,7 +127,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ route('psikologImport') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('tahsinImport') }}" method="post" enctype="multipart/form-data">
           @csrf
           <div class="modal-body">
             <div class="form-group">
