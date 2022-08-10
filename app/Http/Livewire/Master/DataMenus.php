@@ -51,7 +51,6 @@ class DataMenus extends Component
 
     public function createData()
     {
-        dd($this->state['name']);
         Validator::make($this->state, [
             'name' => 'required|max:50|unique:menus,name|',
             'desc' => 'required|max:255',

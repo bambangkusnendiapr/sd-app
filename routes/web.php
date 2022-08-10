@@ -45,6 +45,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     
     //Data Tahsin Upload
     Route::get('/tahsinUpload', \App\Http\Livewire\TahsinUpload::class)->name('tahsinUpload');
+    
+    //Kedisplinan
+    Route::get('/dhuha', \App\Http\Livewire\Kedisiplinan\DhuhaData::class)->name('dhuha');
+    Route::get('/dhuha/create', [App\Http\Controllers\Admin\DhuhaController::class, 'create'])->name('dhuha.create');
+    Route::post('/dhuha/store', [App\Http\Controllers\Admin\DhuhaController::class, 'store'])->name('dhuha.store');
+    Route::get('/dhuha/{id}/edit', [App\Http\Controllers\Admin\DhuhaController::class, 'edit'])->name('dhuha.edit');
+    Route::put('/dhuha/{id}/update', [App\Http\Controllers\Admin\DhuhaController::class, 'update'])->name('dhuha.update');
 
     //Portofolio
     Route::get('/portofolio', \App\Http\Livewire\Portofolio::class)->name('portofolio');
@@ -60,13 +67,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     Route::post('tahsinImport', [App\Http\Controllers\Admin\ImportController::class, 'tahsinImport'])->name('tahsinImport');
     
 
-    //Role
+    //Master Data
     Route::get('/roles', \App\Http\Livewire\Master\DataRoles::class)->name('roles');
     Route::get('/roles/create', [App\Http\Controllers\Admin\Master\RoleController::class, 'create'])->name('role.create');
     Route::post('/roles/store', [App\Http\Controllers\Admin\Master\RoleController::class, 'store'])->name('role.store');
     Route::get('/roles/{id}', [App\Http\Controllers\Admin\Master\RoleController::class, 'edit'])->name('role.edit');
     Route::put('/roles/{id}', [App\Http\Controllers\Admin\Master\RoleController::class, 'update'])->name('role.update');
-
     Route::get('/permissions', \App\Http\Livewire\Master\DataPermissions::class)->name('permissions');
     Route::get('/users', \App\Http\Livewire\Master\DataUsers::class)->name('users');
     Route::get('/menus', \App\Http\Livewire\Master\DataMenus::class)->name('menus');

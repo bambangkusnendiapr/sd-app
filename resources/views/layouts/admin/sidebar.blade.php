@@ -58,6 +58,23 @@
                 </p>
             </a>
           </li>
+          <li class="nav-item @yield('menu-kedisiplinan')">
+            <a href="#" class="nav-link @yield('kedisiplinan')">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                Kedisiplinan
+                <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('dhuha') }}" class="nav-link @yield('dhuha')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Sholat Dhuha</p>
+                  </a>
+                </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a href="{{ route('portofolio') }}" class="nav-link @yield('portofolio')">
                 <i class="nav-icon fas fa-address-card"></i>
@@ -67,47 +84,47 @@
             </a>
           </li>
           <li class="nav-item @yield('menu-master')">
-          <a href="#" class="nav-link @yield('master')">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-              Master Data
-              <i class="fas fa-angle-left right"></i>
-              </p>
-          </a>
-          <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('users') }}" class="nav-link @yield('users')">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>User</p>
-                </a>
-              </li>
-              @role('developer')
-              <li class="nav-item">
-                <a href="{{ route('roles') }}" class="nav-link @yield('roles')">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Role</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('permissions') }}" class="nav-link @yield('permissions')">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Permission</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('menus') }}" class="nav-link @yield('menus')">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Menu</p>
-                </a>
-              </li>
-              @endrole
-              <li class="nav-item">
-                <a href="{{ route('kelas') }}" class="nav-link @yield('kelas')">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Kelas</p>
-                </a>
-              </li>
-          </ul>
+            <a href="#" class="nav-link @yield('master')">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                Master Data
+                <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('users') }}" class="nav-link @yield('users')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>User</p>
+                  </a>
+                </li>
+                @role('developer')
+                <li class="nav-item">
+                  <a href="{{ route('roles') }}" class="nav-link @yield('roles')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Role</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('permissions') }}" class="nav-link @yield('permissions')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Permission</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('menus') }}" class="nav-link @yield('menus')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Menu</p>
+                  </a>
+                </li>
+                @endrole
+                <li class="nav-item">
+                  <a href="{{ route('kelas') }}" class="nav-link @yield('kelas')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Kelas</p>
+                  </a>
+                </li>
+            </ul>
           </li>
           <li class="nav-item">
           <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

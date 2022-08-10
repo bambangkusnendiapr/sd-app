@@ -151,7 +151,7 @@
             @if ($siswa != 'kosong')
             <div class="card-body">
               <div>
-                <h5><strong>1. Hafalan Surat Terakhir: </strong> {{ $siswa->surah->nama }} </h5>
+                <h5><strong>1. Hafalan Surat Terakhir: </strong> {{ $siswa->surat_id ? $siswa->surah->nama:'' }} </h5>
               </div>
               <div>
                 <h5><strong>2. Surat Yang Sudah Dihafal</strong></h5>

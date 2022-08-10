@@ -40,4 +40,9 @@ class Student extends Model
     {
         return $this->hasMany(Tahsin::class);
     }
+
+    public function dhuhas()
+    {
+        return $this->belongsToMany(Dhuha::class);
+    }
 }
