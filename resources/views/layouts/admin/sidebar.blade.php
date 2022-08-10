@@ -73,6 +73,12 @@
                       <p>Sholat Dhuha</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{ route('dhuha') }}" class="nav-link @yield('fardhu')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Sholat Fardhu</p>
+                  </a>
+                </li>
             </ul>
           </li>
           <li class="nav-item">
