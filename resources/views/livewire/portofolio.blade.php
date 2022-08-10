@@ -26,6 +26,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
+          @role('developer|admin')
           <!-- Default box -->
           <div class="card card-outline card-primary">
             <div class="card-body">
@@ -45,6 +46,7 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
+          @endrole
 
           <div class="card card-outline card-primary">
             <div class="card-body text-center">
@@ -199,6 +201,47 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
+
+          <div class="card">
+            <div class="card-header bg-primary">
+              <h3 class="card-title">Kedisiplinan Peserta Didik</h3>
+            </div>
+            @if ($siswa != 'kosong')
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box bg-secondary">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-pray"></i></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Sholat Dhuha</span>
+                      <span class="info-box-number">
+                        {{ $persenDhuha }}
+                        <small>%</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+              </div>
+            </div>
+            @endif
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+          @if($siswa != 'kosong')
+          <div class="card card-outline card-success">
+            <div class="card-body">
+              <form action="{{ route('downloadPortofolio') }}" method="post" target="_blank">
+                @csrf
+                <input type="hidden" name="siswaId" value="{{ $siswaId }}">
+                <button type="submit" class="btn btn-success"><i class="fas fa-download"></i> Download Portofolio</button>
+              </form>
+            </div>
+          </div>
+          @endif
         </div>
       </div>
     </div>

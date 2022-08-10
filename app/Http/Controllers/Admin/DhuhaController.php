@@ -25,7 +25,7 @@ class DhuhaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'tanggal' => ['required'],
+            'tanggal' => ['required', 'unique:dhuhas,tanggal'],
         ]);
 
         if(!$request->siswa) {
@@ -77,6 +77,15 @@ class DhuhaController extends Controller
             'tanggal' => ['required'],
         ]);
 
+        $dhuha = Dhuha::find($id);
+
+        if($request->tanggal != $dhuha->tanggal) {
+            $this->validate($request, [
+                'tanggal' => ['required', 'unique:dhuhas,tanggal'],
+            ]);
+        }
+
+
         if(!$request->siswa) {
             Alert::error('Failed', 'Silahkan Ceklis Data Siswa');
             return redirect()->route('dhuha.create');
@@ -85,7 +94,7 @@ class DhuhaController extends Controller
         DB::beginTransaction();
 
         try {
-            $dhuha = Dhuha::find($id);
+            
             $dhuha->tanggal = $request->tanggal;
             $dhuha->ket = $request->ket;
             $dhuha->save();

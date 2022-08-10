@@ -34,6 +34,7 @@
                 </p>
             </a>
           </li>
+          @role('developer|admin')
           <li class="nav-item">
             <a href="{{ route('student') }}" class="nav-link @yield('student')">
                 <i class="nav-icon fas fa-child"></i>
@@ -81,6 +82,7 @@
                 </li>
             </ul>
           </li>
+          @endrole
           <li class="nav-item">
             <a href="{{ route('portofolio') }}" class="nav-link @yield('portofolio')">
                 <i class="nav-icon fas fa-address-card"></i>
@@ -89,6 +91,7 @@
                 </p>
             </a>
           </li>
+          @role('developer|admin')
           <li class="nav-item @yield('menu-master')">
             <a href="#" class="nav-link @yield('master')">
                 <i class="nav-icon fas fa-copy"></i>
@@ -132,6 +135,7 @@
                 </li>
             </ul>
           </li>
+          @endrole
           <li class="nav-item">
           <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="nav-icon fas fa-sign-out-alt"></i>

@@ -95,7 +95,7 @@
                         </tr>
                       @empty
                         <tr>
-                            <td colspan="4" class="text-center font-italic text-danger"><h5>-- Data Tidak Ditemukan --</h5></td>
+                            <td colspan="5" class="text-center font-italic text-danger"><h5>-- Data Tidak Ditemukan --</h5></td>
                         </tr>
                       @endforelse
                     </tbody>
