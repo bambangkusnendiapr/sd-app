@@ -55,6 +55,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
         Route::get('/dhuha/{id}/edit', [App\Http\Controllers\Admin\DhuhaController::class, 'edit'])->name('dhuha.edit');
         Route::put('/dhuha/{id}/update', [App\Http\Controllers\Admin\DhuhaController::class, 'update'])->name('dhuha.update');
 
+        //Fardhu
+        Route::get('/fardhu', \App\Http\Livewire\Kedisiplinan\FardhuData::class)->name('fardhu');
+        Route::get('/fardhu/create', [App\Http\Controllers\Admin\FardhuController::class, 'create'])->name('fardhu.create');
+        Route::post('/fardhu/store', [App\Http\Controllers\Admin\FardhuController::class, 'store'])->name('fardhu.store');
+        Route::get('/fardhu/{id}/edit', [App\Http\Controllers\Admin\FardhuController::class, 'edit'])->name('fardhu.edit');
+        Route::put('/fardhu/{id}/update', [App\Http\Controllers\Admin\FardhuController::class, 'update'])->name('fardhu.update');
+
+        //Shaum
+        Route::get('/shaum', \App\Http\Livewire\Kedisiplinan\ShaumData::class)->name('shaum');
+        Route::get('/shaum/create', [App\Http\Controllers\Admin\ShaumController::class, 'create'])->name('shaum.create');
+        Route::post('/shaum/store', [App\Http\Controllers\Admin\ShaumController::class, 'store'])->name('shaum.store');
+        Route::get('/shaum/{id}/edit', [App\Http\Controllers\Admin\ShaumController::class, 'edit'])->name('shaum.edit');
+        Route::put('/shaum/{id}/update', [App\Http\Controllers\Admin\ShaumController::class, 'update'])->name('shaum.update');
+
         //Export
         Route::get('/studentExport', [App\Http\Controllers\Admin\ExportController::class, 'studentExport'])->name('studentExport');
         Route::get('/psikologExport', [App\Http\Controllers\Admin\ExportController::class, 'psikologExport'])->name('psikologExport');

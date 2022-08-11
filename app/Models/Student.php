@@ -45,4 +45,14 @@ class Student extends Model
     {
         return $this->belongsToMany(Dhuha::class);
     }
+
+    public function fardhus()
+    {
+        return $this->belongsToMany(Fardhu::class);
+    }
+
+    public function shaums()
+    {
+        return $this->belongsToMany(Shaum::class);
+    }
 }

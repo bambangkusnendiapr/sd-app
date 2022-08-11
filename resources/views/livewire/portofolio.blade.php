@@ -156,7 +156,7 @@
                 <h5><strong>1. Hafalan Surat Terakhir: </strong> {{ $siswa->surat_id ? $siswa->surah->nama:'' }} </h5>
               </div>
               <div>
-                <h5><strong>2. Surat Yang Sudah Dihafal</strong></h5>
+                <h5><strong>2. Surat Yang Sudah Hafal</strong></h5>
                 <div class="mt-n2 ml-4">
                   @foreach ($siswa->surats as $surat)
                   <span class="badge badge-success">{{ $surat->nama }}</span>

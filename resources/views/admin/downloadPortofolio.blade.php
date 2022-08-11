@@ -18,148 +18,193 @@
   <section class="invoice">
     <!-- title row -->
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 text-center">
         <h2 class="page-header">
-          <i class="fas fa-globe"></i> AdminLTE, Inc.
-          <small class="float-right">Date: 2/10/2014</small>
+          Portofolio Peserta Didik
         </h2>
+        <h3>SD Persis Asy-Syuhada</h3>
       </div>
       <!-- /.col -->
     </div>
 
+    <hr>
+
+    <h4>Identitas Peserta Didik</h4>
     <!-- info row -->
     <div class="row invoice-info">
-      <div class="col-sm-4 invoice-col">
-        From
-        <address>
-          <strong>{{ $student->nama }}</strong><br>
-          795 Folsom Ave, Suite 600<br>
-          San Francisco, CA 94107<br>
-          Phone: (804) 123-5432<br>
-          Email: info@almasaeedstudio.com
-        </address>
-      </div>
-      <!-- /.col -->
-      <div class="col-sm-4 invoice-col">
-        To
-        <address>
-          <strong>John Doe</strong><br>
-          795 Folsom Ave, Suite 600<br>
-          San Francisco, CA 94107<br>
-          Phone: (555) 539-1037<br>
-          Email: john.doe@example.com
-        </address>
-      </div>
-      <!-- /.col -->
-      <div class="col-sm-4 invoice-col">
-        <b>Invoice #007612</b><br>
-        <br>
-        <b>Order ID:</b> 4F3S8J<br>
-        <b>Payment Due:</b> 2/22/2014<br>
-        <b>Account:</b> 968-34567
-      </div>
-      <!-- /.col -->
-    </div>
-    <!-- /.row -->
-
-    <!-- Table row -->
-    <div class="row">
-      <div class="col-12 table-responsive">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Qty</th>
-            <th>Product</th>
-            <th>Serial #</th>
-            <th>Description</th>
-            <th>Subtotal</th>
+      
+      <div class="col-sm-9 invoice-col">
+        <table width="100%">
+          <tr class="text-left">
+            <td width="35%">Nama Peserta Didik</td>
+            <td width="5%">:</td>
+            <td>{{ $student->nama }}</td>
           </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>1</td>
-            <td>Call of Duty</td>
-            <td>455-981-221</td>
-            <td>El snort testosterone trophy driving gloves handsome</td>
-            <td>$64.50</td>
+          <tr class="text-left">
+            <td width="35%">No Induk</td>
+            <td width="5%">:</td>
+            <td>{{ $student->nis }}</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Need for Speed IV</td>
-            <td>247-925-726</td>
-            <td>Wes Anderson umami biodiesel</td>
-            <td>$50.00</td>
+          <tr class="text-left">
+            <td width="35%">Kelas</td>
+            <td width="5%">:</td>
+            <td>{{ $student->kelas }} - {{ $student->kls->nama }}</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Monsters DVD</td>
-            <td>735-845-642</td>
-            <td>Terry Richardson helvetica tousled street art master</td>
-            <td>$10.70</td>
+          <tr class="text-left">
+            <td width="35%">Tempat, Tanggal Lahir</td>
+            <td width="5%">:</td>
+            <td>{{ $student->tempat_lahir }}, {{ $student->tgl_lahir }}</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Grown Ups Blue Ray</td>
-            <td>422-568-642</td>
-            <td>Tousled lomo letterpress</td>
-            <td>$25.99</td>
+          <tr class="text-left">
+            <td width="35%">Jenis Kelamin</td>
+            <td width="5%">:</td>
+            <td>{{ $student->jk }}</td>
           </tr>
-          </tbody>
+          <tr class="text-left">
+            <td width="35%">Alamat</td>
+            <td width="5%">:</td>
+            <td>{{ $student->alamat }}</td>
+          </tr>
         </table>
       </div>
       <!-- /.col -->
+
+      <div class="col-sm-3 invoice-col">
+        @if ($student->gambar)
+        <img class="img img-fluid" src="{{ asset('images/siswa/'.$student->gambar) }}" alt="">
+        @else
+        <img class="img img-fluid" src="{{ asset('images/user.jpg') }}" alt="">
+        @endif
+      </div>
+      <!-- /.col -->
+
     </div>
     <!-- /.row -->
 
-    <div class="row">
-      <!-- accepted payments column -->
-      <div class="col-6">
-        <p class="lead">Payment Methods:</p>
-        <img src="{{ asset('admin/dist/img/credit/visa.png') }}" alt="Visa">
-        <img src="{{ asset('admin/dist/img/credit/mastercard.png') }}" alt="Mastercard">
-        <img src="{{ asset('admin/dist/img/credit/american-express.png') }}" alt="American Express">
-        <img src="{{ asset('admin/dist/img/credit/paypal2.png') }}" alt="Paypal">
-
-        <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-          Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr
-          jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-        </p>
+    <hr>
+    
+    <h4>Profil Psikologi Peserta Didik</h4>
+    <div class="row invoice-info">
+      
+      <div class="col-12 invoice-col">
+        <table width="100%" class="table table-striped table-sm">
+          <tr class="text-center">
+            <th>Tanggal</th>
+            <th>IQ</th>
+            <th>Kemandirian</th>
+            <th>Kemampuan Bekerja</th>
+            <th>Penyesuaian Diri</th>
+          </tr>
+          @foreach ($student->psychologist as $psikolog)
+          <tr class="text-center">
+            <td>{{ $psikolog->tanggal }}</td>
+            <td>{{ $psikolog->iq }}</td>
+            <td>{{ $psikolog->kemandirian }}</td>
+            <td>{{ $psikolog->kemampuan_bekerja }}</td>
+            <td>{{ $psikolog->penyesuaian_diri }}</td>
+          </tr>
+          @endforeach
+        </table>
       </div>
       <!-- /.col -->
-      <div class="col-6">
-        <p class="lead">Amount Due 2/22/2014</p>
 
-        <div class="table-responsive">
-          <table class="table">
-            <tr>
-              <th style="width:50%">Subtotal:</th>
-              <td>$250.30</td>
+    </div>
+
+    <hr>
+
+    <h4>Kemampuan Peserta Didik</h4>
+    <div style="margin-top: 20px">
+      <h5 style="margin-bottom: 10px">1. Hafalan Surat Terakhir: <small>{{ $student->surah->nama }}</small></h5>
+      <h5 style="margin-bottom: 0px">2. Surat Yang Sudah Hafal:</h5>
+      <span style="margin-left: 20px">
+        @foreach ($student->surats as $surat)
+        <span style="color: green">{{ $surat->nama }},</span>
+        @endforeach
+      </span>
+      <h5 style="margin-top: 10px">3. Tahsin (5 Terakhir)</h5>
+      <div class="row invoice-info ml-3">
+        
+        <div class="col-12 invoice-col">
+          <table width="100%" class="table table-striped table-sm">
+            <tr class="text-center">
+              <th>Tanggal</th>
+              <th>Jilid</th>
+              <th>Halaman</th>
+              <th>Murajaah</th>
+              <th>Ziyadah</th>
+              <th>Nilai</th>
             </tr>
-            <tr>
-              <th>Tax (9.3%)</th>
-              <td>$10.34</td>
+            @foreach ($student->tahsins->sortByDesc('id')->take(5) as $tahsin)
+            <tr class="text-center">
+              <td>{{ $tahsin->tanggal }}</td>
+              <td>{{ $tahsin->jilid }}</td>
+              <td>{{ $tahsin->halaman }}</td>
+              <td>{{ $tahsin->murajaah }}</td>
+              <td>{{ $tahsin->ziyadah }}</td>
+              <td>{{ $tahsin->nilai }}</td>
             </tr>
-            <tr>
-              <th>Shipping:</th>
-              <td>$5.80</td>
-            </tr>
-            <tr>
-              <th>Total:</th>
-              <td>$265.24</td>
-            </tr>
+            @endforeach
           </table>
         </div>
+        <!-- /.col -->
+  
       </div>
-      <!-- /.col -->
     </div>
-    <!-- /.row -->
+
+    <hr>
+
+    <h4>Kedisiplinan Peserta Didik</h4>
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <div class="info-box">
+          <span class="info-box-icon elevation-1"><i class="fas fa-pray"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Sholat Dhuha</span>
+            <span class="info-box-number">
+              {{ $persenDhuha }}
+              <small>%</small>
+            </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info-box">
+          <span class="info-box-icon elevation-1"><i class="fas fa-pray"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Sholat Fardu</span>
+            <span class="info-box-number">
+              Belum Ada
+              <small>%</small>
+            </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info-box">
+          <span class="info-box-icon elevation-1"><i class="fas fa-pray"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Shaum Sunnah</span>
+            <span class="info-box-number">
+              Belum Ada
+              <small>%</small>
+            </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+      </div>
+    </div>
   </section>
   <!-- /.content -->
 </div>
 <!-- ./wrapper -->
 <!-- Page specific script -->
 <script>
-  window.addEventListener("load", window.print());
+  // window.addEventListener("load", window.print());
 </script>
 </body>
 </html>

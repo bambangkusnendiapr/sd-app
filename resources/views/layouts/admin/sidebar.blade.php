@@ -75,9 +75,15 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('dhuha') }}" class="nav-link @yield('fardhu')">
+                  <a href="{{ route('fardhu') }}" class="nav-link @yield('fardhu')">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Sholat Fardhu</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('shaum') }}" class="nav-link @yield('shaum')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Shaum Sunnah</p>
                   </a>
                 </li>
             </ul>

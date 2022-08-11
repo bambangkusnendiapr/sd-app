@@ -3,16 +3,18 @@
 namespace App\Http\Livewire\Kedisiplinan;
 
 use Livewire\Component;
-use App\Models\Dhuha;
+use App\Models\Fardhu;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class DhuhaData extends Component
+class FardhuData extends Component
 {
     public $idHapus = null;
+
+    public $tanggal = null;
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -34,8 +36,14 @@ class DhuhaData extends Component
 
     public function render()
     {
-        return view('livewire.kedisiplinan.dhuha-data', [
-            'dhuha' => Dhuha::paginate($this->paginate)
+        $fardhu;
+        if($this->tanggal != null) {
+            $fardhu = Fardhu::where('sholat', 'like', '%'.$this->search.'%')->where('tanggal', $this->tanggal)->paginate($this->paginate);
+        } else {
+            $fardhu = Fardhu::where('sholat', 'like', '%'.$this->search.'%')->paginate($this->paginate);
+        }
+        return view('livewire.kedisiplinan.fardhu-data', [
+            'fardhu' => $fardhu
         ]);
     }
 
@@ -50,9 +58,9 @@ class DhuhaData extends Component
     {
         DB::beginTransaction();
         try {
-            $dhuha = Dhuha::findOrFail($this->idHapus);
-            $dhuha->students()->detach();
-            $dhuha->delete();
+            $fardhu = Fardhu::findOrFail($this->idHapus);
+            $fardhu->students()->detach();
+            $fardhu->delete();
 
             DB::commit();
 
@@ -60,7 +68,7 @@ class DhuhaData extends Component
         } catch (Exception $e) {
             DB::rollBack();
             Alert::error('Failed', $e);
-            return redirect()->route('dhuha');
+            return redirect()->route('fardhu');
         }
         
     }
