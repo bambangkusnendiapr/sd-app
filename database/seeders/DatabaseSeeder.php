@@ -20,5 +20,51 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(LaratrustSeeder::class);
+
+        DB::table('menus')->insert([
+            [
+                'name' => 'User',
+                'description' => 'User',
+            ],
+            [
+                'name' => 'Profile',
+                'description' => 'Profile',
+            ],
+            [
+                'name' => 'Role',
+                'description' => 'Role',
+            ],
+            [
+                'name' => 'Permission',
+                'description' => 'Permission',
+            ],
+            [
+                'name' => 'Menu',
+                'description' => 'Menu',
+            ]
+        ]);
+
+        DB::table('kelas')->insert([
+            [
+                'nama' => ' Abu Bakar Ash-Shiddiq',
+                'ket' => '-',
+            ],
+            [
+                'nama' => 'Umar bin Khattab',
+                'ket' => '-',
+            ],
+            [
+                'nama' => 'Usman bin Affan',
+                'ket' => '-',
+            ],
+            [
+                'nama' => 'Ali bin Abi Thalib',
+                'ket' => '-',
+            ],
+            [
+                'nama' => 'Thalhah bin Ubaidillah',
+                'ket' => '-',
+            ]
+        ]);
     }
 }

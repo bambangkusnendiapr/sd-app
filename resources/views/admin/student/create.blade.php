@@ -110,9 +110,44 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
+                          <label for="tanggalMasuk">Tanggal Masuk</label>
+                          <input name="tanggalMasuk" type="date" class="form-control @error('tanggalMasuk') is-invalid @enderror" id="tanggalMasuk" required placeholder="tanggalMasuk" value="{{ old('tanggalMasuk') }}">
+                          @error('tanggalMasuk')
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>
+                          @enderror
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
                           <label for="kelas">Kelas</label>
-                          <input name="kelas" type="text" class="form-control @error('kelas') is-invalid @enderror" id="kelas" required placeholder="Kelas" value="{{ old('kelas') }}">
+                          <select name="kelas" id="kelas" class="form-control @error('kelas') is-invalid @enderror" required>
+                            <option value="">Pilih Kelas</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                          </select>
                           @error('kelas')
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>
+                          @enderror
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="kelasTipe">Kelas Tipe</label>
+                          <select name="kelasTipe" id="kelasTipe" class="form-control @error('kelasTipe') is-invalid @enderror" required>
+                            <option value="">Pilih Kelas Tipe</option>
+                            @foreach ($kelas as $kls)
+                            <option value="{{ $kls->id }}">{{ $kls->nama }}</option>
+                            @endforeach
+                          </select>
+                          @error('kelasTipe')
                             <div class="invalid-feedback">
                               {{ $message }}
                             </div>
@@ -133,7 +168,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label for="tempatLahir">Tempat Lahir</label>
-                          <input name="tempatLahir" type="text" class="form-control @error('tempatLahir') is-invalid @enderror" id="tempatLahir" required placeholder="tempat Lahir" value="{{ old('tempatLahir') }}">
+                          <input name="tempatLahir" type="text" class="form-control @error('tempatLahir') is-invalid @enderror" id="tempatLahir" required placeholder="Tempat Lahir" value="{{ old('tempatLahir') }}">
                           @error('tempatLahir')
                             <div class="invalid-feedback">
                               {{ $message }}
@@ -220,9 +255,6 @@
                         </div>
                       </div>
                       <div class="col-md-4">
-                        <div class="form-group">
-                          <img id="img" src="{{ asset('images/user.jpg')}}" width="100px" height="100px"/>
-                        </div>
                         <div class="form-group"> 
                           <label><strong>Foto</strong></label>@error('filefoto') <span class="text-danger font-italic">{{ $message }}</span>@enderror
                           <div class="custom-file">
@@ -232,6 +264,9 @@
                                 Max: 2mb
                               </div>
                           </div>
+                        </div>
+                        <div class="form-group">
+                          <img id="img" src="{{ asset('images/user.jpg')}}" width="100px" height="100px"/>
                         </div>
                       </div>
                     </div>

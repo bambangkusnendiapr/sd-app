@@ -111,9 +111,44 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
+                          <label for="tanggalMasuk">Tanggal Masuk</label>
+                          <input name="tanggalMasuk" type="date" class="form-control @error('tanggalMasuk') is-invalid @enderror" id="tanggalMasuk" required placeholder="tanggalMasuk" value="{{ $siswa->tanggal_masuk }}">
+                          @error('tanggalMasuk')
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>
+                          @enderror
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
                           <label for="kelas">Kelas</label>
-                          <input name="kelas" type="text" class="form-control @error('kelas') is-invalid @enderror" id="kelas" required placeholder="Kelas" value="{{ $siswa->kelas }}">
+                          <select name="kelas" id="kelas" class="form-control @error('kelas') is-invalid @enderror" required>
+                            <option value="">Pilih Kelas</option>
+                            <option value="1" {{ $siswa->kelas == 1 ? 'selected':'' }}>1</option>
+                            <option value="2" {{ $siswa->kelas == 2 ? 'selected':'' }}>2</option>
+                            <option value="3" {{ $siswa->kelas == 3 ? 'selected':'' }}>3</option>
+                            <option value="4" {{ $siswa->kelas == 4 ? 'selected':'' }}>4</option>
+                            <option value="5" {{ $siswa->kelas == 5 ? 'selected':'' }}>5</option>
+                            <option value="6" {{ $siswa->kelas == 6 ? 'selected':'' }}>6</option>
+                          </select>
                           @error('kelas')
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>
+                          @enderror
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="kelasTipe">Kelas Tipe</label>
+                          <select name="kelasTipe" id="kelasTipe" class="form-control @error('kelasTipe') is-invalid @enderror" required>
+                            <option value="">Pilih Kelas Tipe</option>
+                            @foreach ($kelas as $kls)
+                            <option value="{{ $kls->id }}" {{ $siswa->kelas_id == $kls->id ? 'selected':'' }}>{{ $kls->nama }}</option>
+                            @endforeach
+                          </select>
+                          @error('kelasTipe')
                             <div class="invalid-feedback">
                               {{ $message }}
                             </div>
@@ -222,13 +257,6 @@
                       </div>
 
                       <div class="col-md-4">
-                        <div class="form-group">
-                          @if($siswa->gambar)
-                          <img id="img" src="{{ asset('images/siswa/'.$siswa->gambar)}}" width="100px" height="100px"/>
-                          @else
-                          <img id="img" src="{{ asset('images/user.jpg')}}" width="100px" height="100px"/>
-                          @endif
-                        </div>
                         <div class="form-group"> 
                           <label><strong>Foto</strong></label>@error('filefoto') <span class="text-danger font-italic">{{ $message }}</span>@enderror
                           <div class="custom-file">
@@ -238,6 +266,13 @@
                                 Max: 2mb
                               </div>
                           </div>
+                        </div>
+                        <div class="form-group">
+                          @if($siswa->gambar)
+                          <img id="img" src="{{ asset('images/siswa/'.$siswa->gambar)}}" width="100px" height="100px"/>
+                          @else
+                          <img id="img" src="{{ asset('images/user.jpg')}}" width="100px" height="100px"/>
+                          @endif
                         </div>
                       </div>
                     </div>

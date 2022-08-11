@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Kelas;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,7 +16,9 @@ class StudentController extends Controller
 {
     public function create()
     {
-        return view('admin.student.create');
+        return view('admin.student.create', [
+            'kelas' => Kelas::all()
+        ]);
     }
 
     public function store(Request $request)
@@ -25,6 +28,7 @@ class StudentController extends Controller
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'tanggalMasuk' => ['required'],
             'noInduk' => ['required', 'string', 'max:50'],
             'tempatLahir' => ['required', 'string', 'max:50'],
             'tglLahir' => ['required'],
@@ -43,7 +47,8 @@ class StudentController extends Controller
             'prov' => ['required', 'string', 'max:200'],
             'filefoto' => 'mimes:jpg,png,jpeg,gif|max:2048', // max 2000kb/2mb
             'hafalan' => 'required|max:200',
-            'kelas' => 'required|max:10'
+            'kelas' => 'required',
+            'kelasTipe' => 'required'
         ]);
 
         DB::beginTransaction();
@@ -69,6 +74,7 @@ class StudentController extends Controller
 
             Student::create([
                 'user_id' => $user->id,
+                'tanggal_masuk' => $request->tanggalMasuk,
                 'nis' => $request->noInduk,
                 'nama' => $request->nama,
                 'tempat_lahir' => $request->tempatLahir,
@@ -92,6 +98,7 @@ class StudentController extends Controller
                 'gambar' => $namafile,
                 'surat_awal' => $request->hafalan,
                 'kelas' => $request->kelas,
+                'kelas_id' => $request->kelasTipe,
             ]);
 
             DB::commit();
@@ -110,7 +117,8 @@ class StudentController extends Controller
         try {
             $siswa = Student::findOrFail($id);
             return view('admin.student.edit', [
-                'siswa' => $siswa
+                'siswa' => $siswa,
+                'kelas' => Kelas::all()
             ]);
         } catch (Exception $e) {
             Alert::error('Failed', 'Data Not Found');
@@ -142,7 +150,9 @@ class StudentController extends Controller
             'prov' => ['required', 'string', 'max:200'],
             'filefoto' => 'mimes:jpg,png,jpeg,gif|max:2048', // max 2000kb/2mb,
             'hafalan' => 'required|max:200',
-            'kelas' => 'required|max:10'
+            'kelas' => 'required',
+            'tanggalMasuk' => 'required',
+            'kelasTipe' => 'required'
         ]);
 
         $student = Student::find($id);
@@ -198,6 +208,7 @@ class StudentController extends Controller
 
             Student::where('id', $id)->update([
                 'nis' => $request->noInduk,
+                'tanggal_masuk' => $request->tanggalMasuk,
                 'nama' => $request->nama,
                 'tempat_lahir' => $request->tempatLahir,
                 'tgl_lahir' => $request->tglLahir,
@@ -220,6 +231,7 @@ class StudentController extends Controller
                 'gambar' => $gambar,
                 'surat_awal' => $request->hafalan,
                 'kelas' => $request->kelas,
+                'kelas_id' => $request->kelasTipe,
             ]);
 
             DB::commit();

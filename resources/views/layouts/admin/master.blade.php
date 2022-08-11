@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Template | @yield('title')</title>
+  <title>SD Persis Asy-Syuhada | @yield('title')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -52,9 +52,9 @@
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0.0
+      <b>App Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2022 <a href="https://smkwidyadirgantara.sch.id/" target="_blank">SMK WD</a>. Design By <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022 <a href="https://pesantrenpersis6.com/" target="_blank">SD Persis Asy-Syuhada</a>. Design By <a href="https://adminlte.io" target="_blank">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

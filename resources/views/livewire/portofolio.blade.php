@@ -216,7 +216,39 @@
                     <div class="info-box-content">
                       <span class="info-box-text">Sholat Dhuha</span>
                       <span class="info-box-number">
-                        {{ $persenDhuha }}
+                        {{ number_format($persenDhuha, 2, ',', '.') }}
+                        <small>%</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box bg-secondary">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-pray"></i></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Sholat Fardhu</span>
+                      <span class="info-box-number">
+                        {{ number_format($persenFardhu, 2, ',', '.') }}
+                        <small>%</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box bg-secondary">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-utensil-spoon"></i></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Shaum Sunnah</span>
+                      <span class="info-box-number">
+                        {{ number_format($persenShaum, 2, ',', '.') }}
                         <small>%</small>
                       </span>
                     </div>
@@ -236,7 +268,10 @@
             <div class="card-body">
               <form action="{{ route('downloadPortofolio') }}" method="post" target="_blank">
                 @csrf
-                <input type="hidden" name="siswaId" value="{{ $siswaId }}">
+                <input type="hidden" name="siswaId" value="{{ $siswa->id }}">
+                <input type="hidden" name="persenShaum" value="{{ $persenShaum }}">
+                <input type="hidden" name="persenFardhu" value="{{ $persenFardhu }}">
+                <input type="hidden" name="persenDhuha" value="{{ $persenDhuha }}">
                 <button type="submit" class="btn btn-success"><i class="fas fa-download"></i> Download Portofolio</button>
               </form>
             </div>

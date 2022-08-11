@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SMK WD | Log in</title>
+  <title>SD Persis Asy-Syuhada | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,11 +17,13 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ asset('admin/index2.html') }}"><b>SD</b> Persis Asy-Syuhada</a>
+    <img src="{{ asset('images/logo.png') }}" width="50%">
+    <!-- <a href="{{ asset('admin/index2.html') }}"><b>SD</b> Persis Asy-Syuhada</a> -->
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
+      <p class="login-box-msg">Login SD Persis Asy-Syuhada</p>
 
       <form action="{{ route('login') }}" method="post">
         @csrf

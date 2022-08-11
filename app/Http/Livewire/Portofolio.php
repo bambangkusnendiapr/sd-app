@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Student;
 use App\Models\Dhuha;
+use App\Models\Fardhu;
+use App\Models\Shaum;
 use App\Models\Psychologist;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +32,8 @@ class Portofolio extends Component
     public $penyesuaianDiri;
 
     public $persenDhuha;
+    public $persenFardhu;
+    public $persenShaum;
 
     public function render()
     {
@@ -47,13 +51,43 @@ class Portofolio extends Component
             $this->alamat = $student->alamat;
             $this->gambar = $student->gambar;
 
+            // Dhuha
             //ambil data dhuha >= tanggal masuk siswa dan jumlahkan
             $jumlahDhuha = Dhuha::where('tanggal', '>=', $student->tanggal_masuk)->count();
 
             //ambil data sholat dhuha siswa
             $jumlahDhuhaSiswa = DB::table('dhuha_student')->where('student_id', $student->id)->count();
+            if(!$jumlahDhuhaSiswa) {
+                $this->persenDhuha = 0;
+            } else {
+                $this->persenDhuha = $jumlahDhuhaSiswa / $jumlahDhuha * 100;
+            }
 
-            $this->persenDhuha = $jumlahDhuhaSiswa / $jumlahDhuha * 100;
+            // Fardhu
+            //ambil data fardhu >= tanggal masuk siswa dan jumlahkan
+            $jumlahFardhu = Fardhu::where('tanggal', '>=', $student->tanggal_masuk)->count();
+
+            //ambil data sholat dhuha siswa
+            $jumlahFardhuSiswa = DB::table('fardhu_student')->where('student_id', $student->id)->count();
+            if(!$jumlahFardhuSiswa) {
+                $this->persenFardhu = 0;
+            } else {
+                $this->persenFardhu = $jumlahFardhuSiswa / $jumlahFardhu * 100;
+            }
+
+
+            //Shaum
+            //ambil data shaum >= tanggal masuk siswa dan jumlahkan
+            $jumlahShaum = Shaum::where('tanggal', '>=', $student->tanggal_masuk)->count();
+
+            //ambil data sholat dhuha siswa
+            $jumlahShaumSiswa = DB::table('shaum_student')->where('student_id', $student->id)->count();
+            if(!$jumlahShaumSiswa) {
+                $this->persenShaum = 0;
+            } else {
+                $this->persenShaum = $jumlahShaumSiswa / $jumlahShaum * 100;
+            }
+
         }
 
         if($this->siswaId != 'Semua') {
@@ -73,8 +107,33 @@ class Portofolio extends Component
 
             //ambil data sholat dhuha siswa
             $jumlahDhuhaSiswa = DB::table('dhuha_student')->where('student_id', $student->id)->count();
+            if(!$jumlahDhuhaSiswa) {
+                $this->persenDhuha = 0;
+            } else {
+                $this->persenDhuha = $jumlahDhuhaSiswa / $jumlahDhuha * 100;
+            }
 
-            $this->persenDhuha = $jumlahDhuhaSiswa / $jumlahDhuha * 100;
+            //ambil data fardhu >= tanggal masuk siswa dan jumlahkan
+            $jumlahFardhu = Fardhu::where('tanggal', '>=', $student->tanggal_masuk)->count();
+
+            //ambil data sholat dhuha siswa
+            $jumlahFardhuSiswa = DB::table('fardhu_student')->where('student_id', $student->id)->count();
+            if(!$jumlahFardhuSiswa) {
+                $this->persenFardhu = 0;
+            } else {
+                $this->persenFardhu = $jumlahDhuhaSiswa / $jumlahDhuha * 100;
+            }
+
+            //ambil data shaum >= tanggal masuk siswa dan jumlahkan
+            $jumlahShaum = Shaum::where('tanggal', '>=', $student->tanggal_masuk)->count();
+
+            //ambil data sholat dhuha siswa
+            $jumlahShaumSiswa = DB::table('shaum_student')->where('student_id', $student->id)->count();
+            if(!$jumlahShaumSiswa) {
+                $this->persenShaum = 0;
+            } else {
+                $this->persenShaum = $jumlahDhuhaSiswa / $jumlahDhuha * 100;
+            }
 
         }
         return view('livewire.portofolio', [

@@ -162,7 +162,7 @@
           <div class="info-box-content">
             <span class="info-box-text">Sholat Dhuha</span>
             <span class="info-box-number">
-              {{ $persenDhuha }}
+              {{ number_format($persenDhuha, 2, ',', '.') }}
               <small>%</small>
             </span>
           </div>
@@ -174,9 +174,9 @@
           <span class="info-box-icon elevation-1"><i class="fas fa-pray"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text">Sholat Fardu</span>
+            <span class="info-box-text">Sholat Fardhu</span>
             <span class="info-box-number">
-              Belum Ada
+              {{ number_format($persenFardhu, 2, ',', '.') }}
               <small>%</small>
             </span>
           </div>
@@ -190,7 +190,7 @@
           <div class="info-box-content">
             <span class="info-box-text">Shaum Sunnah</span>
             <span class="info-box-number">
-              Belum Ada
+              {{ number_format($persenShaum, 2, ',', '.') }}
               <small>%</small>
             </span>
           </div>
@@ -204,7 +204,7 @@
 <!-- ./wrapper -->
 <!-- Page specific script -->
 <script>
-  // window.addEventListener("load", window.print());
+  window.addEventListener("load", window.print());
 </script>
 </body>
 </html>

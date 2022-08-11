@@ -135,7 +135,7 @@
             </div>
             <div class="form-group">
               <label for="iq">IQ</label>
-              <input wire:model.defer="state.iq" required type="number" class="form-control @error('iq') is-invalid @enderror" id="iq" placeholder="iq">
+              <input wire:model.defer="state.iq" required type="number" class="form-control @error('iq') is-invalid @enderror" id="iq" placeholder="IQ">
               @error('iq')
                 <div class="invalid-feedback">
                   {{ $message }}

@@ -108,7 +108,7 @@
                         <tr class="text-center">
                             <td>{{ $students->firstItem() + $key }}</td>
                             <td>{{ $data->id }}</td>
-                            <td>{{ $data->nama }}</td>
+                            <td class="text-left">{{ $data->nama }}</td>
                             <td>{{ $data->kelas }} - {{ $data->kls->nama }}</td>
                             <td>
                               <div class="btn-group" role="group" aria-label="Basic example">

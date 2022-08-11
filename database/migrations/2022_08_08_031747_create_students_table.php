@@ -47,7 +47,7 @@ return new class extends Migration
             $table->integer('kelas_id')->nullable();
             $table->integer('point')->default(0);
             $table->string('surat_awal')->nullable();
-            $table->integer('surat_id')->nullable();
+            $table->integer('surat_id')->default(1);
             $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
