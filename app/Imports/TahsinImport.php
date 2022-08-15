@@ -18,9 +18,10 @@ class TahsinImport implements ToCollection, WithHeadingRow
             $data->student_id = $row['siswa_id'];
             $data->jilid = $row['jilid'];
             $data->halaman = $row['halaman'];
+            $data->nilai_tahsin = $row['nilai_tahsin'];
             $data->murajaah = $row['murajaah'];
             $data->ziyadah = $row['ziyadah'];
-            $data->nilai = $row['nilai'];
+            $data->nilai_tahfizh = $row['nilai_tahfizh'];
             $data->save();            
         }
     }

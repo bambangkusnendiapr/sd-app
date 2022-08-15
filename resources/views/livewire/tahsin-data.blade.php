@@ -65,10 +65,10 @@
                             <th>Tanggal</th>
                             <th>Jilid</th>
                             <th>Halaman</th>
+                            <th>Nilai Tahsin</th>
                             <th>Murajaah</th>
                             <th>Ziyadah</th>
-                            <th>Nilai</th>
-                            <th>Keterangan</th>
+                            <th>Nilai Tahfizh</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -79,10 +79,10 @@
                             <td>{{ $data->tanggal }}</td>
                             <td>{{ $data->jilid }}</td>
                             <td>{{ $data->halaman }}</td>
+                            <td>{{ $data->nilai_tahsin }}</td>
                             <td>{{ $data->murajaah }}</td>
                             <td>{{ $data->ziyadah }}</td>
-                            <td>{{ $data->nilai }}</td>
-                            <td>{{ $data->ket }}</td>
+                            <td>{{ $data->nilai_tahfizh }}</td>
                             <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <button wire:click.prevent="edit({{ $data->id }})" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
@@ -92,7 +92,7 @@
                         </tr>
                       @empty
                         <tr>
-                            <td colspan="9" class="text-center font-italic text-danger"><h5>-- Data Tidak Ditemukan --</h5></td>
+                            <td colspan="10" class="text-center font-italic text-danger"><h5>-- Data Tidak Ditemukan --</h5></td>
                         </tr>
                       @endforelse
                     </tbody>
@@ -220,6 +220,22 @@
               @enderror
             </div>
             <div class="form-group">
+              <label for="nilaiTahsin">Nilai Tahsin</label>
+              <select wire:model.defer="state.nilaiTahsin" required class="form-control @error('nilaiTahsin') is-invalid @enderror" id="nilaiTahsin">
+                <option value="">Pilih Nilai</option>
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="B-">B-</option>
+                <option value="C">C</option>
+              </select>
+              @error('nilaiTahsin')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+            <div class="form-group">
               <label for="murajaah">Murajaah</label>
               <input wire:model.defer="state.murajaah" required type="text" class="form-control @error('murajaah') is-invalid @enderror" id="murajaah" placeholder="Murajaah">
               @error('murajaah')
@@ -238,25 +254,14 @@
               @enderror
             </div>
             <div class="form-group">
-              <label for="nilai">Nilai</label>
-              <select wire:model.defer="state.nilai" required class="form-control @error('nilai') is-invalid @enderror" id="nilai">
+              <label for="nilaiTahfizh">NilaiTahfizh</label>
+              <select wire:model.defer="state.nilaiTahfizh" required class="form-control @error('nilaiTahfizh') is-invalid @enderror" id="nilaiTahfizh">
                 <option value="">Pilih Nilai</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
+                <option value="Lancar">Lancar</option>
+                <option value="Kurang Lancar">Kurang Lancar</option>
+                <option value="Tidak Lancar">Tidak Lancar</option>
               </select>
-              @error('nilai')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
-            <div class="form-group">
-              <label for="ket">Keterangan</label>
-              <input wire:model.defer="state.ket" required type="text" class="form-control @error('ket') is-invalid @enderror" id="ket" placeholder="Keterangan">
-              @error('ket')
+              @error('nilaiTahfizh')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>

@@ -76,10 +76,10 @@
                             <th>Nama</th>
                             <th>Jilid</th>
                             <th>Halaman</th>
+                            <th>Nilai Tahsin</th>
                             <th>Murajaah</th>
                             <th>Ziyadah</th>
-                            <th>Nilai</th>
-                            <th>Keterangan</th>
+                            <th>Nilai Tahfizh</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,14 +90,14 @@
                             <td>{{ $data->student->nama }}</td>
                             <td>{{ $data->jilid }}</td>
                             <td>{{ $data->halaman }}</td>
+                            <td>{{ $data->nilai_tahsin }}</td>
                             <td>{{ $data->murajaah }}</td>
                             <td>{{ $data->ziyadah }}</td>
-                            <td>{{ $data->nilai }}</td>
-                            <td>{{ $data->ket }}</td>
+                            <td>{{ $data->nilai_tahfizh }}</td>
                         </tr>
                       @empty
                         <tr>
-                            <td colspan="9" class="text-center font-italic text-danger"><h5>-- Data Tidak Ditemukan --</h5></td>
+                            <td colspan="10" class="text-center font-italic text-danger"><h5>-- Data Tidak Ditemukan --</h5></td>
                         </tr>
                       @endforelse
                     </tbody>

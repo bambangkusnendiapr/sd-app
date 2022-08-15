@@ -37,7 +37,6 @@ class TahsinUpload extends Component
 
         return view('livewire.tahsin-upload', [
             'tahsin' => Tahsin::whereIn('student_id', $student)->where('is_deleted', false)->paginate($this->paginate),
-            'students' => Student::all()
         ]);
     }
 }

@@ -20,9 +20,10 @@ return new class extends Migration
             $table->integer('student_id');
             $table->string('jilid')->nullable();
             $table->string('halaman')->nullable();
+            $table->string('nilai_tahsin')->nullable();
             $table->string('murajaah')->nullable();
             $table->string('ziyadah')->nullable();
-            $table->string('nilai')->nullable();
+            $table->string('nilai_tahfizh')->nullable();
             $table->text('ket')->nullable();
             $table->boolean('is_deleted')->default(false);
             $table->timestamps();

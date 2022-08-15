@@ -68,8 +68,8 @@ class TahsinData extends Component
             'halaman' => 'required|max:255',
             'murajaah' => 'required|max:255',
             'ziyadah' => 'required|max:255',
-            'nilai' => 'required|max:255',
-            'ket' => 'required|max:255',
+            'nilaiTahsin' => 'required',
+            'nilaiTahfizh' => 'required',
         ])->validate();
 
         DB::beginTransaction();
@@ -82,8 +82,8 @@ class TahsinData extends Component
             $data->halaman = $this->state['halaman'];
             $data->murajaah = $this->state['murajaah'];
             $data->ziyadah = $this->state['ziyadah'];
-            $data->nilai = $this->state['nilai'];
-            $data->ket = $this->state['ket'];
+            $data->nilai_tahsin = $this->state['nilaiTahsin'];
+            $data->nilai_tahfizh = $this->state['nilaiTahfizh'];
             $data->save();
 
             DB::commit();
@@ -108,8 +108,8 @@ class TahsinData extends Component
         $this->state['halaman'] = $data->halaman;
         $this->state['murajaah'] = $data->murajaah;
         $this->state['ziyadah'] = $data->ziyadah;
-        $this->state['nilai'] = $data->nilai;
-        $this->state['ket'] = $data->ket;
+        $this->state['nilaiTahsin'] = $data->nilai_tahsin;
+        $this->state['nilaiTahfizh'] = $data->nilai_tahfizh;
 
         $this->dispatchBrowserEvent('show-form');
     }
@@ -122,8 +122,8 @@ class TahsinData extends Component
             'halaman' => 'required|max:255',
             'murajaah' => 'required|max:255',
             'ziyadah' => 'required|max:255',
-            'nilai' => 'required|max:255',
-            'ket' => 'required|max:255',
+            'nilaiTahsin' => 'required',
+            'nilaiTahfizh' => 'required',
         ])->validate();
 
         
@@ -136,8 +136,8 @@ class TahsinData extends Component
             $data->halaman = $this->state['halaman'];
             $data->murajaah = $this->state['murajaah'];
             $data->ziyadah = $this->state['ziyadah'];
-            $data->nilai = $this->state['nilai'];
-            $data->ket = $this->state['ket'];
+            $data->nilai_tahsin = $this->state['nilaiTahsin'];
+            $data->nilai_tahfizh = $this->state['nilaiTahfizh'];
             $data->save();
 
             DB::commit();

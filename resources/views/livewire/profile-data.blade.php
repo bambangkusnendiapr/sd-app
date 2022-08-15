@@ -28,9 +28,16 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
+                @role('developer|admin')
                 <img class="profile-user-img img-fluid img-circle"
                       src="{{ asset('admin/dist/img/user2-160x160.jpg') }}"
                       alt="User profile picture">
+                @endrole
+                @role('siswa')
+                <img class="profile-user-img img-fluid img-circle"
+                      src="{{ asset('images/user.jpg') }}"
+                      alt="User profile picture">
+                @endrole
               </div>
 
               <h3 class="profile-username text-center">{{ $nama }}</h3>

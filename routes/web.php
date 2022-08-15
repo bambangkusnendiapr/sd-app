@@ -17,6 +17,14 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('optimize');
+    return 'DONE'; //Return anything
+});
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -95,6 +103,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
 
     //Portofolio
     Route::get('/portofolio', \App\Http\Livewire\Portofolio::class)->name('portofolio');
+    Route::get('/downloadPortofolio', [App\Http\Controllers\Admin\PortofolioController::class, 'getDownloadPortofolio'])->name('getDownloadPortofolio');
     Route::post('/downloadPortofolio', [App\Http\Controllers\Admin\PortofolioController::class, 'downloadPortofolio'])->name('downloadPortofolio');
     
 

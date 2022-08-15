@@ -21,4 +21,9 @@ class PortofolioController extends Controller
             'persenShaum' => $request->persenShaum,
         ]);
     }
+
+    public function getDownloadPortofolio()
+    {
+        return redirect()->route('portofolio');
+    }
 }
