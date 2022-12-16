@@ -112,7 +112,8 @@
                               class="form-check-input" 
                               id="exampleCheck1" 
                               value="{{ $student->id }}"
-                              {{ in_array($student->id, $fardhuStudents) ? 'checked="checked"' : '' }}
+                              @php $salatView = $salat->where('student_id', $student->id)->first() @endphp
+                              {{ (in_array($student->id, $fardhuStudents) && ($salatView->salat == 1)) ? 'checked="checked"' : '' }}
                               >
 														<label class="form-check-label" for="exampleCheck1">{{ $student->nama }}</label>
 													</div>

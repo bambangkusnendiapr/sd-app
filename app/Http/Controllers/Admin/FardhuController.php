@@ -48,10 +48,13 @@ class FardhuController extends Controller
                 'ket' => $request->ket,
             ]);
 
-            $fardhu->students()->sync($request->siswa);
+            $fardhu->students()->attach($request->siswa);
+
+            $studentNotSalat = Student::whereNotIn('id', $request->siswa)->get('id');
+            $fardhu->students()->attach($studentNotSalat, ['salat' => false]);
 
             DB::commit();
-    
+            
             Alert::success('Sukses', 'Data Sholat Fardhu Siswa Berhasil Disimpan');
             return redirect()->route('fardhu');
         } catch (Exception $e) {
@@ -69,12 +72,16 @@ class FardhuController extends Controller
             return redirect()->route('fardhu');
         }
 
+        // $salat = DB::table('fardhu_student')->where('fardhu_id', $id)->get(['student_id', 'salat']);
+        // dd($salat->where('student_id', 3));
+
         $kelas = Student::get('kelas')->unique('kelas');
         return view('admin.fardhu.edit', [
             'kelas' => $kelas,
             'students' => Student::all(),
             'fardhu' => $fardhu,
-            'fardhuStudents' => $fardhu->students()->get()->pluck('id')->toArray()
+            'fardhuStudents' => $fardhu->students()->get()->pluck('id')->toArray(),
+            'salat' => DB::table('fardhu_student')->where('fardhu_id', $id)->get(['student_id', 'salat'])
         ]);
     }
 
@@ -108,7 +115,13 @@ class FardhuController extends Controller
             $fardhu->ket = $request->ket;
             $fardhu->save();
 
-            $fardhu->students()->sync($request->siswa);
+            // $fardhu->students()->sync($request->siswa);
+            $fardhu->students()->detach();
+
+            $fardhu->students()->attach($request->siswa);
+
+            $studentNotSalat = Student::whereNotIn('id', $request->siswa)->get('id');
+            $fardhu->students()->attach($studentNotSalat, ['salat' => false]);
 
             DB::commit();
     
